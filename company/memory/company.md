@@ -2,13 +2,16 @@
 
 最終更新: 2026-09-08
 
-## 現状（初期化時点）
-- リポジトリは新規（コミット0件）で開始。既存事業なし。
-- リポジトリ名 `poe2-build-navi-jp` から、Path of Exile 2（PoE2）の日本語ビルド/攻略ナビサイトが
-  想定ベンチャーと判断し、これを唯一かつ主力事業として立ち上げた。
-- ドメイン・ホスティング・広告アカウント（AdSense等）・アフィリエイトアカウントは未取得（人間承認待ち、
-  decisions.md参照）。
-- PV・売上: 0（未公開）。
+## 現状（2026-09-08時点）
+- リポジトリ名 `poe2-build-navi-jp` から、Path of Exile 2（PoE2）の日本語ビルド/攻略ナビサイトを
+  唯一かつ主力事業として立ち上げた。
+- Search Console・Google AdSenseの申請はユーザーが別途（ChatGPT経由）で対応済み。ただし本番サイトの
+  実URLはこのリポジトリからは不明（sitemap.xml等はプレースホルダードメインのまま、ユーザー回答待ち）。
+- アフィリエイト（ASP）登録は未着手。個人情報・金融情報の入力が伴うためAIは最終申込みは行わない方針
+  （company/memory/affiliate.md参照）。
+- ビルド記事は `.claude/hooks/session-start-tasks.sh` によりセッション開始のたびに自動で1本ずつ追加される
+  運用にした（company/memory/content-queue.md参照）。
+- PV・売上: 未計測（本番URL未確認のため）。
 
 ## 主力事業: PoE2ビルドナビ
 - 内容: Path of Exile 2の初心者向け攻略サイト（静的サイト、ビルド不要のプレーンHTML/CSS/JS）。
@@ -26,7 +29,7 @@
 - 月商10万円達成後、収益化チャネル（広告/アフィリエイト）の実績を見て次の配分方針を見直す。
 
 ## 次のマイルストーン
-1. 人間承認: ドメイン取得 or 無料ホスティング(Vercel/Cloudflare Pages/GitHub Pages)での公開
-2. 人間承認: Google Search Console登録・Google Analytics導入
-3. 人間承認: AdSense申請（要一定コンテンツ量・トラフィック）
-4. コンテンツ拡充: クラス別詳細ビルド記事、Exilecon 2026（11/7-9）後の1.0情報更新
+1. ユーザー確認待ち: 本番サイトの実URL（sitemap.xml等のプレースホルダー解消のため）
+2. ユーザー確認待ち: 利用したいアフィリエイトASPの選定（company/memory/affiliate.md）
+3. 自動継続中: クラス別スタータービルド記事の追加（content-queue.md、セッション開始ごとに1本）
+4. Exilecon 2026（11/7-9）後、1.0/デュエリスト情報ページの更新
