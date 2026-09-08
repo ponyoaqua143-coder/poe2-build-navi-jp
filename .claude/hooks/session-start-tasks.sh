@@ -37,7 +37,7 @@ commitしてpushしてください。ユーザーから他の指示がある場�
 fi
 
 if [ -f "$AFFILIATE_FILE" ] && grep -q '^status: pending_human_action' "$AFFILIATE_FILE" 2>/dev/null; then
-  NOTE="アフィリエイト連携: company/memory/affiliate.md がpending_human_actionのままです。ユーザーがまだ「本番サイトURL」と「利用したいASP」に回答していない場合は、会話の早い段階で一度確認してください（すでに回答済み・対応済みなら再確認は不要です）。"
+  NOTE="アフィリエイト連携: company/memory/affiliate.md がpending_human_actionのままです。ASPはA8.netに決定済み。残りは「本番サイトURL」の確認のみです。まだURLの回答がない場合は会話の早い段階で一度確認してください（すでに回答済み・対応済みなら再確認は不要です）。"
   if [ -n "$CONTEXT" ]; then
     CONTEXT="$CONTEXT
 
