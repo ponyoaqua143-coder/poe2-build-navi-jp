@@ -43,6 +43,29 @@
   両方を確認）。`jq -e` でsettings.jsonのスキーマも検証済み。SessionStartはターン内で発火させて
   検証できないため、実際の発火は次回セッション開始時に確認が必要。
 
+## 2026-09-08: 本番サイトはChatGPT版（poe2-build-navi-jp.github.io）と判明、リポジトリ未特定
+- ユーザーからサイトのZIP（`poe2-build-navi-jp.github.io-main`）を受領し中身を精査。
+- 内容: 8クラス（ウォリアー/モンク/レンジャー/マーサリー/ソーサレス/ウィッチ/ハントレス/ドルイド）対応。
+  ドルイドは0.4.0パッチ"The Last of the Druids"で追加された実在クラスと確認済み（誤情報ではない）。
+  クラスごとに1本、Lv1〜Endgameまで8段階の育成ロードマップを持つビルド記事、data/builds.json・
+  data/classes.jsonを元にtools/generate-pages.mjsで静的HTMLを生成する構成。scripts/test-site.mjsによる
+  データ整合性の自動テストがあり実行して合格を確認済み（8クラス・8ビルド・必須フィールド・ステージ数など）。
+  ads.txt・Search Console確認用ファイル・sitemap・robots・プライバシー/利用規約/編集方針/運営者情報ページも
+  揃っている。品質・作り込みは私が最初に作ったMVPより大幅に上。
+- 重大な制約: `baseUrl: https://poe2-build-navi-jp.github.io` がgenerate-pages.mjs・sitemap・canonical・
+  JSON-LD等に直書きされている。GitHub Pagesのユーザーページ（`<account>.github.io`）はリポジトリ名と
+  アカウント名が一致している必要があるため、このサイトは `poe2-build-navi-jp` という名前の**別の
+  GitHubアカウント**上の `poe2-build-navi-jp.github.io` リポジトリで運用されていると推測される。
+  今セッションが接続しているのは `ponyoaqua143-coder` アカウントのみで、別アカウントのリポジトリは
+  同一セッションでは扱えない（add_repoで cross-tier エラー）。
+- 判断: このZIPの中身を `ponyoaqua143-coder/poe2-build-navi-jp` にそのまま持ち込んでGitHub Pages公開すると、
+  URLが変わり（`ponyoaqua143-coder.github.io/poe2-build-navi-jp/` 等）、既存のSearch Console登録・
+  AdSense審査・canonical URLとの整合性が崩れる。ドメインを維持したまま自動化するには、実際に
+  `poe2-build-navi-jp.github.io` を配信しているリポジトリへの書き込みアクセスが必要。
+- 次のアクション: ユーザーに、そのGitHubアカウントへのログイン可否と、Claude用GitHub連携をそちらにも
+  接続できるか（または`ponyoaqua143-coder`へのリポジトリ移管が可能か）を確認する。回答が得られるまで、
+  このリポジトリの内容をZIPの内容で上書きする作業は保留する。
+
 ## 2026-09-08: アフィリエイト登録は「登録の完了」までは自動化しない
 - 理由: アフィリエイト登録には個人情報・銀行口座・税務情報の入力と規約同意が伴い、経営指示書の
   HUMAN APPROVAL GATE（認証情報変更・支払い・規約上リスクのある自動化）に該当するため。
